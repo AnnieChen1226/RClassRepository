@@ -10,6 +10,9 @@
 1. 學習如何使用GitHub <br />
 2. 安裝R/Rstudio
 3. Markdown
+
+HW:
+[RmarkdownExample](https://anniechen1226.github.io/RClassRepository/Week1/RMarkdownExample.html)
 ## 7/11
 # Week2
 ## 7/15

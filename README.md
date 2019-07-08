@@ -8,6 +8,7 @@
 # Week1 
 ## 7/8
 > 學習如何使用GitHub <br />
+> 安裝R/Rstudio
 ## 7/11
 # Week2
 ## 7/15

@@ -9,6 +9,7 @@
 ## 7/8
 1. 學習如何使用GitHub <br />
 2. 安裝R/Rstudio
+3. Markdown
 ## 7/11
 # Week2
 ## 7/15

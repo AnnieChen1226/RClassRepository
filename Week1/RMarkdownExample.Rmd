@@ -1,0 +1,69 @@
+---
+title: "RMarkdownExample"
+author: "Annie"
+date: "2019/7/8"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+example 4 pieChart1
+
+```{r pie}
+expenditure <- c("Housing"=600, "Food"=300,"Cloths"=150,"Entrtainment"=100,"Other "=200)
+expenditure
+pie(expenditure)
+```
+
+example 4 pieChart2
+
+```{r pie2}
+pie(expenditure,
+    labels=as.character(expenditure),
+    main="MonthlyExpenditureBreakdown",
+    col=c("red","orange","yellow","blue","green"),
+    border="brown",clockwise=TRUE)
+```
+
+example 4 barChart1
+
+```{r barChart1}
+max.temp <- c(22, 27, 26, 24, 23, 26, 28)
+barplot(max.temp)
+```
+
+example 4 barChart2
+
+```{r barChart2, echo=TRUE}
+# barchart with added parameters
+barplot(max.temp,
+main = "Maximum Temperatures in a Week",
+xlab = "Degree Celsius",
+ylab = "Day",
+names.arg = c("Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"),
+col = "darkred",
+horiz = TRUE)
+```
+

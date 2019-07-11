@@ -14,8 +14,8 @@
 HW:
 [RmarkdownExample](https://anniechen1226.github.io/RClassRepository/Week1/RMarkdownExample.html)
 ## 7/11
-1.資料收集與清洗<br />
-2.爬蟲實作<br />
+1. 資料收集與清洗<br />
+2. 爬蟲實作<br />
 
 HW:
 [TidyData:MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week1/20190711/MarriageAndDivorce.html)

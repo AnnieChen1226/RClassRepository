@@ -9,6 +9,13 @@ output: html_document
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
+參考資料:\r\n
+https://www.ris.gov.tw/app/portal/346\r\n
+
+結婚及離婚\r\n
+
+(01結婚對數及粗結婚率(按登記)(36) [xls] [ods])\r\n
+(07離婚對數及粗離婚率(按登記)(36) [xls] [ods])\r\n
 
 ```{r rate,echo=FALSE}
 library(dplyr)

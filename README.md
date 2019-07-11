@@ -18,7 +18,7 @@ HW:
 2. 爬蟲實作<br />
 
 HW:
-[TidyData:MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week1/20190711/MarriageAndDivorce.html)
+[TidyData:MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week1/MarriageAndDivorce.html)
 # Week2
 ## 7/15
 ## 7/18

@@ -8,14 +8,14 @@
 # Week1 
 ## 7/8
 1. 學習如何使用GitHub <br />
-2. 安裝R/Rstudio
-3. Markdown
+2. 安裝R/Rstudio<br />
+3. Markdown<br />
 
 HW:
 [RmarkdownExample](https://anniechen1226.github.io/RClassRepository/Week1/RMarkdownExample.html)
 ## 7/11
-1.資料收集與清洗
-2.爬蟲實作
+1.資料收集與清洗<br />
+2.爬蟲實作<br />
 
 HW:
 [TidyData:MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week1/20190711/MarriageAndDivorce.html)

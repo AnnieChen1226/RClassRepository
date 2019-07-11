@@ -14,6 +14,8 @@
 HW:
 [RmarkdownExample](https://anniechen1226.github.io/RClassRepository/Week1/RMarkdownExample.html)
 ## 7/11
+HW:
+[TidyData:MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week1/20190708/RMarkdownExample.Rmd)
 # Week2
 ## 7/15
 ## 7/18

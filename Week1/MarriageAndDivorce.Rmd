@@ -25,3 +25,4 @@ marriageRate <- read_excel("D:/download/Rclass/marriageRate.xls")
 general=merge(marriageRate,divorceRate,by="year")
  general
 ```
+

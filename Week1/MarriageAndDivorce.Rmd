@@ -1,0 +1,20 @@
+---
+title: "MarriageAndDivorce"
+author: "Annie Chen"
+date: "2019/7/11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r rate,echo=FALSE}
+library(dplyr)
+library(readxl)
+divorceRate <- read_excel("D:/download/Rclass/divorceRate.xls")
+marriageRate <- read_excel("D:/download/Rclass/marriageRate.xls")
+general=merge(marriageRate,divorceRate,by="year")
+ general
+```

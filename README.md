@@ -25,7 +25,7 @@ HW:
 2. ggplot2實作<br />
 
 HW:
-[Learning How to Use ggplot2](https://anniechen1226.github.io/RClassRepository/Week2/20190715/MarriageAndDivorce.html)
+[Learning How to Use ggplot2](https://anniechen1226.github.io/RClassRepository/Week2/20190715/MarriageAndDivorce.html
 ## 7/18
 # Week3
 ## 7/22

@@ -21,6 +21,8 @@ HW:
 [TidyData:MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week1/MarriageAndDivorce.html)
 # Week2
 ## 7/15
+HW:
+[Learning How to Use GGPlot2](https://anniechen1226.github.io/RClassRepository/Week2/20190715/MarriageAndDivorce.html)
 ## 7/18
 # Week3
 ## 7/22

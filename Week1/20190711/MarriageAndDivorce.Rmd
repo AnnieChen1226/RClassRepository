@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 參考資料:\r\n
@@ -17,7 +17,7 @@ https://www.ris.gov.tw/app/portal/346\r\n
 (01結婚對數及粗結婚率(按登記)(36) [xls] [ods])\r\n
 (07離婚對數及粗離婚率(按登記)(36) [xls] [ods])\r\n
 
-```{r rate,echo=FALSE}
+```{r rate}
 library(dplyr)
 library(readxl)
 divorceRate <- read_excel("D:/download/Rclass/divorceRate.xls")
@@ -25,3 +25,26 @@ marriageRate <- read_excel("D:/download/Rclass/marriageRate.xls")
 general=merge(marriageRate,divorceRate,by="year")
  general
 ```
+
+```{r plot}
+library(dplyr)
+library(readxl)
+library(ggplot2)
+data1<-read_excel("D:/Annie/Documents/GitHub/GitHubForRClass/RClassRepository/Week2/20190715/test/rateTest.xlsx")
+
+ggplot(data=data1,aes(x=year,y=rate,group=supp))+geom_line(linetype="dashed",color="skyblue",size=1.2)+geom_point(color="pink",size=1.5)
+
+p<-ggplot(data1, aes(x=year, y=rate, group=supp)) +
+  geom_line(aes(color=supp))+
+  geom_point(aes(color=supp))
+
+# Use custom color palettes
+p+scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))
+# Use brewer color palettes
+p+scale_color_brewer(palette="Dark2")
+# Use grey scale
+p + scale_color_grey() + theme_classic()
+
+p
+```
+

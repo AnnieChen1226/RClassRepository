@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 參考資料:\r\n
@@ -17,7 +17,7 @@ https://www.ris.gov.tw/app/portal/346\r\n
 (01結婚對數及粗結婚率(按登記)(36) [xls] [ods])\r\n
 (07離婚對數及粗離婚率(按登記)(36) [xls] [ods])\r\n
 
-```{r rate,echo=FALSE}
+```{r rate}
 library(dplyr)
 library(readxl)
 divorceRate <- read_excel("D:/download/Rclass/divorceRate.xls")

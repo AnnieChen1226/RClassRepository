@@ -38,12 +38,11 @@ p<-ggplot(data1, aes(x=year, y=rate, group=supp)) +
   geom_line(aes(color=supp))+
   geom_point(aes(color=supp))
 
-# Use custom color palettes
+
 p+scale_color_manual(values=c("#999999", "#E69F00", "#56B4E9"))
-# Use brewer color palettes
+
 p+scale_color_brewer(palette="Dark2")
-# Use grey scale
-p + scale_color_grey() + theme_classic()
+ scale_color_grey() + theme_classic()
 
 p
 ```

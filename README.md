@@ -21,6 +21,9 @@ HW:
 [TidyData:MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week1/MarriageAndDivorce.html)
 # Week2
 ## 7/15
+1.資料視覺化與EDA<br />
+2.GGPlot2實作<br />
+
 HW:
 [Learning How to Use GGPlot2](https://anniechen1226.github.io/RClassRepository/Week2/20190715/MarriageAndDivorce.html)
 ## 7/18

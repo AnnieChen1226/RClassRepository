@@ -56,6 +56,8 @@ p
 
 ##結婚率的長條圖
 
+據內政部統計，從1951年以來，台灣結婚率僅有3年低於千分之6，最低的1年是在2009年，當年結婚率僅千分之5.07，不到12萬對的新人結婚，其次就是去年，結婚率甚至低於2007年的千分之5.89。
+
 ```{r BarChart4M}
 data2<-read_excel("D:/download/Rclass/marriageRate.xls")
 data4Marriage<-select(data2,"year","marriageRate")
@@ -63,9 +65,19 @@ ggplot(data=data4Marriage,aes(x=year,y=marriageRate,fill=year))+geom_bar(stat="i
 ```
 
 ##離婚率的長條圖
+
+相較於低結婚率，由此圖可見，台灣的離婚率則有走高趨勢，去年全年有5萬4412對離婚，離婚率千分之2.31，是2013年以來最高點。
+
+離婚率大增16.22％
+
 ```{r BarChart}
 data3<-read_excel("D:/download/Rclass/divorceRate.xls")
 data4Divorce<-select(data3,"year","divorceRate")
 ggplot(data=data4Divorce,aes(x=year,y=divorceRate,fill=year))+geom_bar(stat="identity")
 ```
 
+根據內政部最新統計，今年1月有1萬4314對新人結婚，結婚率千分之7.15，由於農曆年前原本就是結婚旺季，若與去年同月相較，仍減少54對。今年1月也有4384對夫妻離婚，離婚率千分之2.19，比去年同期增加612對，離婚率大幅提高16.22％。
+
+對於結婚少，離婚多的現象，兩性學者何春蕤表示，根本原因是社會變遷，人與人相互容忍度越來越低，彼此和樂相處變得不太容易。結婚的目的既然不能得到更多好處，反而變成麻煩事，年輕人自然就感到遲疑，甚至裹足不前。
+
+兩性學者吳娟瑜指出景氣長年不佳，不少年輕人陷入低薪困境，使得許多人把經濟穩定擺在第一，感情生活其次，在現實生活的壓力下，更不想走入婚姻。吳娟瑜常聽到周遭一些友人說，寧願努力去賺自己的人生，也不要投入婚姻、家庭而失去自我。

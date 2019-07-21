@@ -11,25 +11,26 @@
 2. 安裝R/Rstudio<br />
 3. Markdown<br />
 
-HW:
+HW: <br />
 [RmarkdownExample](https://anniechen1226.github.io/RClassRepository/Week1/RMarkdownExample.html)
 ## 7/11
 1. 資料收集與清洗<br />
 2. 爬蟲實作<br />
 
-HW:
+HW: <br />
 [TidyData : MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week1/MarriageAndDivorce.html)
 # Week2
 ## 7/15
 1. 資料視覺化與EDA<br />
 2. ggplot2實作<br />
 
-HW:
+HW: <br />
 [Learning How to Use ggplot2 : MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week2/20190715/MarriageAndDivorce.html)
 ## 7/18
-1. 文字探勘簡介
-2. Jieba實作
-HW:
+1. 文字探勘簡介 <br />
+2. Jieba實作 <br />
+
+HW: <br />
 [Jieba實作 : ptt八卦版分析](https://anniechen1226.github.io/RClassRepository/Week2/20190718/pttAllData.html)
 # Week3
 ## 7/22

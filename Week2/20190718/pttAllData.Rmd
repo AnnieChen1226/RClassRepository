@@ -1,0 +1,173 @@
+---
+title: "Ptt Gossping (20190717-20190718)"
+author: "Annie Chen"
+date: "2019/7/18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r data}
+library(readxl)
+library(NLP)
+library(httr)
+library(tm)
+library(jiebaRD)
+library(jiebaR)
+library(RColorBrewer)
+library(wordcloud)
+library(xml2)
+library(XML)
+library(rvest)
+library(bitops)
+library(RCurl)
+
+##讀csv
+xdir = "D:/Annie/Documents/GitHub/GitHubForRClass/RClassRepository/example/test"
+fnames = list.files(path=xdir,pattern="*.csv")
+
+xtext = NULL
+for (f in fnames) {
+  fpath = paste(xdir,f,sep="/")
+  t0 = readLines(fpath)
+  t1 = paste(t0,collapse=" ")
+  xtext = c(xtext,t1)
+}
+```
+
+
+```{r clear}
+#文字清洗
+d.corpus <- Corpus( VectorSource(fnames) )
+d.corpus <- tm_map(d.corpus, removePunctuation)
+d.corpus <- tm_map(d.corpus, removeNumbers)
+d.corpus <- tm_map(d.corpus, function(word) {
+    gsub("[A-Za-z0-9]", "", word)
+})
+```
+
+```{r word}
+#斷詞
+library(jiebaR)
+
+xseg = worker() # 一般斷詞
+#新增詞彙
+new_user_word(xseg,'柯文哲',"n")
+new_user_word(xseg,'柯P',"n")
+new_user_word(xseg,'柯p',"n")
+new_user_word(xseg,'蔡英文',"n")
+new_user_word(xseg,'民進黨',"n")
+new_user_word(xseg,'國民黨',"n")
+new_user_word(xseg,'韓國瑜',"n")
+new_user_word(xseg,'郭台銘',"n")
+new_user_word(xseg,'中天',"n")
+new_user_word(xseg,'柯市長',"n")
+new_user_word(xseg,'蔡總統',"n")
+new_user_word(xseg,'韓導',"n")
+new_user_word(xseg,'韓草包',"n")
+new_user_word(xseg,'韓總機',"n")
+new_user_word(xseg,'高雄',"n")
+new_user_word(xseg,'發大財',"n")
+new_user_word(xseg,'蘇貞昌',"n")
+new_user_word(xseg,'柯粉',"n")
+new_user_word(xseg,'反送中',"n")
+new_user_word(xseg,'逃犯條例',"n")
+new_user_word(xseg,'問卦',"n")
+new_user_word(xseg,'一個中國',"n")
+new_user_word(xseg,'一國兩制',"n")
+new_user_word(xseg,'出來選',"n")
+new_user_word(xseg,'出來',"n")
+new_user_word(xseg,'罷工',"n")
+new_user_word(xseg,'長榮',"n")
+new_user_word(xseg,'台獨',"n")
+new_user_word(xseg,'台獨分子',"n")
+new_user_word(xseg,'台獨份子',"n")
+new_user_word(xseg,'julia',"n")
+new_user_word(xseg,'京阿尼',"n")
+new_user_word(xseg,'東京',"n")
+new_user_word(xseg,'日本',"n")
+new_user_word(xseg,'當選',"n")
+new_user_word(xseg,'大選',"n")
+new_user_word(xseg,'總統大選',"n")
+new_user_word(xseg,'2020',"n")
+
+xtext2 = NULL
+for (i in 1:length(xtext)){
+  t0 = xtext[i]
+  t1 = xseg <= t0
+  xtext2 = c(xtext2,paste0(t1,collapse=" "))
+}
+
+require(dplyr)
+
+text_df = data_frame(doc_id = 1:length(xtext2), text = xtext2)
+head(text_df)
+
+
+
+library(tidytext)
+
+library(stringr)
+tok99 = function(t) str_split(t,"[ ]{1,}")
+
+td1 = unnest_tokens(text_df,word, text, token=tok99)
+
+td1
+
+td_count = count(td1,word, sort = TRUE)
+
+td_count
+```
+
+```{r clearWords}
+#清掉沒意義的詞彙
+library(tmcn)
+myStopWords <- c(stopwordsCN(),  "時間", "標題", "發信", "實業", "作者", "所以", "這樣", "就是", "的", "因為", "是", "我", "也就", "然後", "如果", "可是", "我們", "不是", "沒有", "現在", "沒", "啊", "阿", "知道", "覺得", "應該", "的", "是", "了", "都", "在", "我", "你", "有", "也就", "也", "就", "當然", "但", "但是", "而且")
+d.corpus <- tm_map(d.corpus, removeWords, myStopWords)
+head(myStopWords, 20)
+```
+
+```{r ggplot}
+#頻率圖
+
+library(ggplot2)
+
+td_count %>%
+filter(n > 350) %>%
+mutate(word = reorder(word, n)) %>%
+ggplot(aes(word, n)) +
+geom_col() +
+xlab(NULL) +
+coord_flip()
+```
+
+從以上圖表可看出，在ptt八卦版的鄉民們大多數都是在談論政治，而明年的2020總統大選應該是目前最多人討論的話題，從圖表上可以看到柯文哲的討論度是最高的，除了身為台北市長之外，柯文哲的參選與否也會影響2020總統大選，我想這也是為什麼「柯文哲」會是版上出現最多次的名字。
+除了柯文哲之外，也可看到「蔡英文」、「韓國瑜」兩位確定參選的總統候選人，所以推斷目前最熱門的話題應該就是2020總統大選了。
+
+```{r wordcloud}
+# 文字雲
+
+library(wordcloud)
+
+td_count %>%
+with(wordcloud(word, n, min.freq = 50, scale=c(10,1),
+random.order = F, ordered.colors = F, colors=rainbow(1000)) )
+```
+
+```{r TF-IDF}
+# 計算 TF-IDF
+
+
+td2 = td1 %>%
+count(doc_id,word,sort=T) %>%
+ungroup() %>%
+bind_tf_idf(word,doc_id, n)
+
+td2
+
+td_tfidf = arrange(td2,desc(tf_idf))
+
+td_tfidf
+```

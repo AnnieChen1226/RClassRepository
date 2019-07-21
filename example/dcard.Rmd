@@ -1,0 +1,87 @@
+---
+title: "Dcard"
+author: "Annie Chen"
+date: "2019/7/18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 熱門版
+```{r}
+library(rvest)
+read_html("https://www.dcard.tw/f")
+doc<-read_html("https://www.dcard.tw/f")
+doc %>% html_nodes(".PostList_entry_1rq5Lf a")
+doc %>% html_nodes(".PostList_entry_1rq5Lf a") %>% html_attr("href")
+doc %>% html_nodes(".PostList_entry_1rq5Lf a") %>% html_text() 
+```
+
+### 時事版
+```{r}
+library(rvest)
+read_html("https://www.dcard.tw/topics/%E9%A6%99%E6%B8%AF")
+doc<-read_html("https://www.dcard.tw/topics/%E9%A6%99%E6%B8%AF")
+doc %>% html_nodes(".PostList_entry_1rq5Lf a")
+doc %>% html_nodes(".PostList_entry_1rq5Lf a") %>% html_attr("href")
+doc %>% html_nodes(".PostList_entry_1rq5Lf a") %>% html_text() 
+```
+
+###
+
+```{r}
+library(httr)
+library(jsonlite)
+library(dplyr)
+options(stringsAsFactors = FALSE)
+options(encoding = "UTF-8")
+
+dcardurl <- 'https://www.dcard.tw/_api/forums/'
+board <- 'trending'
+mainurl <- paste0(dcardurl,board,'/posts?popular=false')
+
+resdata <- fromJSON(content(GET(mainurl), "text"))
+head(resdata[,1:3])
+tail(resdata[,1:3])
+
+end <- resdata$id[length(resdata$id)]
+end
+
+n <- 150
+
+page <- (150/30)-1
+
+for(i in 1:page)
+{
+url <- paste0(mainurl,"&before=",end)
+
+tmpres <- fromJSON(content(GET(url), "text"))
+
+end <- tmpres$id[length(tmpres$id)]
+
+resdata1 <- merge(tmpres,resdata,by="id")
+#resdata1 <- bind_rows(resdata,tmpres)
+}
+
+#rm(tmpres)
+
+head(resdata1[,1:5])
+tail(resdata1[,1:5])
+nrow(resdata1)
+
+
+#tmpres1<-select(tmpres,"id","title","excerpt")
+#head(tmpres1)
+
+head(tmpres[,1:9])
+tail(tmpres[,1:9])
+nrow(tmpres)
+#saveRDS(tmpres, file = "dcard.rds")
+```
+
+### 時事版(#反送中)
+```{r}
+
+```

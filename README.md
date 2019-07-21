@@ -27,6 +27,10 @@ HW:
 HW:
 [Learning How to Use ggplot2 : MarriageAndDivorce](https://anniechen1226.github.io/RClassRepository/Week2/20190715/MarriageAndDivorce.html)
 ## 7/18
+1. 文字探勘簡介
+2. Jieba實作
+HW:
+[Jieba實作 : ptt八卦版分析](https://anniechen1226.github.io/RClassRepository/Week2/20190718/pttAllData.html)
 # Week3
 ## 7/22
 ## 7/25

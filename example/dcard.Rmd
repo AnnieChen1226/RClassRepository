@@ -82,6 +82,50 @@ nrow(tmpres)
 ```
 
 ### 時事版(#反送中)
-```{r}
+```{r time}
+library(httr)
+library(jsonlite)
+library(dplyr)
 
+options(stringsAsFactors = FALSE)
+
+options(encoding = "UTF-8")
+
+dcardurl <- 'https://www.dcard.tw/_api/forums/'
+
+board <- 'trending'
+
+mainurl <- paste0(dcardurl,board,'/posts?popular=false')
+
+resdata <- fromJSON(content(GET(mainurl), "text"))
+
+head(resdata[,1:2])
+tail(resdata[,1:2])
+
+end <- resdata$id[length(resdata$id)]
+
+end
+
+n <- 60
+
+page <- (60/30)-1
+
+for(i in 1:page){
+  url <- paste0(mainurl,"&before=",end)
+  print(url)
+  resdata <- fromJSON(content(GET(url), "text"))
+
+  end <- resdata$id[length(resdata$id)]
+  
+  #resdata1 <- bind_rows(resdata,tmpres)
+  }
+
+  resdata1<-select(resdata,"id","title","excerpt","createdAt")
+  #resdata1
+  head(resdata1)
+  tail(resdata1)
+  #rm(tmpres)
+  
+  #head(resdata1[,1:2])
+  #tail(resdata1[,1:2])
 ```

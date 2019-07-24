@@ -1,0 +1,177 @@
+---
+title: "Dcard"
+author: "Annie Chen"
+date: "2019/7/25"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r lineChart}
+library(readxl)
+library(ggplot2)
+
+#DcardData<-read.csv("D://Annie//Documents//GitHub//GitHubForRClass//Extradition-Bill//DcardData//DcardData.csv",sep = ",", as.is = TRUE)
+DcardData<-read_excel("D://Annie//Documents//GitHub//GitHubForRClass//Extradition-Bill//DcardData//DcardData.xlsx")
+DcardData$createdAt <- as.Date(DcardData$createdAt,format="%Y-%m-%d")
+t=c("Dcard")
+
+Graph<-ggplot(data=DcardData,aes(x=createdAt,y=qua,group=t))+
+  geom_line(aes(color=t))+
+  geom_point(aes(color=t))
+
+Graph_plus<-Graph+scale_color_manual(values=c("#46a3ff"))+ scale_x_date(date_minor_breaks="3 day")+scale_y_continuous(trans = 'sqrt') 
+print(Graph_plus)
+```
+
+```{r wordCloud}
+library(readxl)
+library(ggplot2)
+
+#DcardData<-read.csv("D://Annie//Documents//GitHub//GitHubForRClass//Extradition-Bill//DcardData//DcardData.csv",sep = ",", as.is = TRUE)
+DcardData<-read_excel("D://Annie//Documents//GitHub//GitHubForRClass//Extradition-Bill//DcardData//DcardData.xlsx")
+DcardData$createdAt <- as.Date(DcardData$createdAt,format="%Y-%m-%d")
+t=c("Dcard")
+
+Graph<-ggplot(data=DcardData,aes(x=createdAt,y=qua,group=t))+
+  geom_line(aes(color=t))+
+  geom_point(aes(color=t))
+
+Graph_plus<-Graph+scale_color_manual(values=c("#28004d"))+ scale_x_date(date_minor_breaks="3 day")+scale_y_continuous(trans = 'sqrt') 
+print(Graph_plus)
+
+library(NLP)
+library(httr)
+library(jsonlite)
+library(tm)
+library(jiebaRD)
+library(jiebaR)
+library(dplyr)
+library(ggplot2)
+library(wordcloud)
+
+library(httr)
+library(jsonlite)
+library(dplyr)
+
+getwd()
+setwd("D:/Annie/Documents/GitHub/GitHubForRClass/RClassRepository/example/test")
+options(stringsAsFactors = FALSE)
+options(encoding = "UTF-8")
+dcardurl <- 'https://www.dcard.tw/_api/forums/'
+board <- 'trending'
+mainurl <- paste0(dcardurl,board,'/posts?popular=false')
+resdata <- fromJSON(content(GET(mainurl), "text"))
+resdataD<-as.data.frame(resdata)%>%
+  select(title,createdAt)
+
+end <- resdata$id[length(resdata$id)]
+end
+
+n <- 1500
+page <- (1500/30)-1
+pageread<-2
+resdata1<-NULL
+for(i in 2:page){
+  Sys.sleep(1)
+  url <- paste0(mainurl,"&before=",end,"&limit=30")
+  tmpres <- fromJSON(content(GET(url), "text"))
+  tmpresD<-as.data.frame(tmpres)%>%
+    select(title,createdAt)
+  end <- tmpres$id[length(tmpres$id)]
+  #resdata1<-do.call(rbind,resdata,tmpres)
+  resdata1 <-rbind(tmpresD,resdata1)}
+
+dseg<- function(str,term) {
+  str = gsub("[A-Za-z0-9]", "", str)
+  seg = cutter[str]
+  seg = seg[names(seg)==term]
+  id = which(nchar(seg) > 1)
+  result = seg[id]
+}
+
+head(resdata1$title)
+cutter <- worker('tag',write = "NOFILE")
+new_user_word(cutter,'中天','n')
+new_user_word(cutter,'總統','n')
+new_user_word(cutter,'韓粉','n')
+new_user_word(cutter,'民主','n')
+new_user_word(cutter,'自由','n')
+new_user_word(cutter,'選舉','n')
+new_user_word(cutter,'大選','n')
+new_user_word(cutter,'香港','n')
+new_user_word(cutter,'台灣','n')
+new_user_word(cutter,'中國','n')
+new_user_word(cutter,'韓導','n')
+new_user_word(cutter,'蔡英文','n')
+new_user_word(cutter,'韓國瑜','n')
+new_user_word(cutter,'柯文哲','n')
+new_user_word(cutter,'民進黨','n')
+new_user_word(cutter,'國民黨','n')
+new_user_word(cutter,'反送中','n')
+new_user_word(cutter,'一國兩制','n')
+txt1<-unlist(lapply(resdata1$title[1:100],dseg,'n'))
+st1<-freq(txt1)
+st1<-st1[order(st1$freq,decreasing = TRUE),]
+wordcloud(words=st1$char,freq=st1$freq,scale = c(3,0.1), 
+          random.order = F,
+          ordered.colors = F,
+          rot.per = F,
+          min.freq = 1,
+          colors = brewer.pal(8,"Dark2"))
+```
+```{r wordcloud2}
+n <- 6000
+page <- (6000/30)-1
+pageread<-2
+resdata1<-NULL
+for(i in 2:page){
+  Sys.sleep(1)
+  url <- paste0(mainurl,"&before=",end,"&limit=30")
+  tmpres <- fromJSON(content(GET(url), "text"))
+  tmpresD<-as.data.frame(tmpres)%>%
+    select(title,createdAt)
+  end <- tmpres$id[length(tmpres$id)]
+  #resdata1<-do.call(rbind,resdata,tmpres)
+  resdata1 <-rbind(tmpresD,resdata1)}
+
+dseg<- function(str,term) {
+  str = gsub("[A-Za-z0-9]", "", str)
+  seg = cutter[str]
+  seg = seg[names(seg)==term]
+  id = which(nchar(seg) > 1)
+  result = seg[id]
+}
+
+head(resdata1$title)
+cutter <- worker('tag',write = "NOFILE")
+new_user_word(cutter,'中天','n')
+new_user_word(cutter,'總統','n')
+new_user_word(cutter,'韓粉','n')
+new_user_word(cutter,'民主','n')
+new_user_word(cutter,'自由','n')
+new_user_word(cutter,'選舉','n')
+new_user_word(cutter,'大選','n')
+new_user_word(cutter,'香港','n')
+new_user_word(cutter,'台灣','n')
+new_user_word(cutter,'中國','n')
+new_user_word(cutter,'韓導','n')
+new_user_word(cutter,'蔡英文','n')
+new_user_word(cutter,'韓國瑜','n')
+new_user_word(cutter,'柯文哲','n')
+new_user_word(cutter,'民進黨','n')
+new_user_word(cutter,'國民黨','n')
+new_user_word(cutter,'反送中','n')
+new_user_word(cutter,'一國兩制','n')
+txt1<-unlist(lapply(resdata1$title[1:100],dseg,'n'))
+st1<-freq(txt1)
+st1<-st1[order(st1$freq,decreasing = TRUE),]
+wordcloud(words=st1$char,freq=st1$freq,scale = c(3,0.1), 
+          random.order = F,
+          ordered.colors = F,
+          rot.per = F,
+          min.freq = 50,
+          colors = brewer.pal(8,"Dark2"))
+```

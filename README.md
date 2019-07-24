@@ -34,9 +34,15 @@ HW: <br />
 [Jieba實作 : ptt八卦版分析](https://anniechen1226.github.io/RClassRepository/Week2/20190718/pttAllData.html)
 # Week3
 ## 7/22
+1. 機器學習與資料科學的關係 <br />
+2. scikit-learn實作 <br />
 ## 7/25
+1. 資料科學專題講座 <br />
+2. 資料科學成果發表 <br />
 
-#FinalProject
-[從論壇上觀察反送中討論度](https://anniechen1226.github.io/RClassRepository/example/finalProject/Chart4PttData.html)
+##FinalProject 
+[Dcard Chart](https://anniechen1226.github.io/RClassRepository/Final_Project/Chart4DcardData.html)<br />
+[Ptt Chart](https://anniechen1226.github.io/RClassRepository/Final_Project/Chart4PttData.html)<br />
+[從論壇上觀察反送中討論度](https://anniechen1226.github.io/RClassRepository/Final_Project/從論壇分析台灣人對反送中的討論度.pdf)<br />
 
 

@@ -40,7 +40,7 @@ HW: <br />
 1. 資料科學專題講座 <br />
 2. 資料科學成果發表 <br />
 
-##FinalProject 
+##FinalProject <br />
 [Dcard Chart](https://anniechen1226.github.io/RClassRepository/Final_Project/Chart4DcardData.html)<br />
 [Ptt Chart](https://anniechen1226.github.io/RClassRepository/Final_Project/Chart4PttData.html)<br />
 [從論壇上觀察反送中討論度](https://anniechen1226.github.io/RClassRepository/Final_Project/從論壇分析台灣人對反送中的討論度.pdf)<br />
